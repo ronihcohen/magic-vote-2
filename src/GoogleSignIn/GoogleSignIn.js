@@ -20,7 +20,7 @@ class GoogleSignIn extends Component {
   }
 
   signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
+    const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
       console.log("User signed out.");
       this.setState({ profile: null });
