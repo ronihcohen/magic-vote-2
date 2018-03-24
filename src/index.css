@@ -1,0 +1,14 @@
+body {
+  background-color: #141829;
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  margin: 20px;
+}
+
+a {
+  color: white;
+}
+
+.wrapper {
+  color: #fff;
+}
