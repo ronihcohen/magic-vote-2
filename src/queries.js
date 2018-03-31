@@ -17,3 +17,11 @@ export const GET_POLLS = gql`
     }
   }
 `;
+
+export const DELETE_POLL = gql`
+  mutation deletePoll($id: ID!) {
+    deletePoll(id: $id) {
+      id
+    }
+  }
+`;

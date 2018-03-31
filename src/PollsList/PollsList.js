@@ -2,6 +2,7 @@ import React from "react";
 import { Query } from "react-apollo";
 
 import { GET_POLLS } from "../queries";
+import DeletePoll from "../DeletePoll/DeletePoll";
 
 const PollsList = () => (
   <Query query={GET_POLLS}>
@@ -12,6 +13,7 @@ const PollsList = () => (
       return data.allPolls.map(({ name, id }) => (
         <div key={id}>
           <p>{`${name}`}</p>
+          <DeletePoll id={id} />
         </div>
       ));
     }}
