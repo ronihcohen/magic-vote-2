@@ -4,6 +4,7 @@ import style from "./index.css";
 
 import GoogleSignIn from "./GoogleSignIn/GoogleSignIn";
 import PollsList from "./PollsList/PollsList";
+import CreatePoll from "./CreatePoll/CreatePoll";
 
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
@@ -19,6 +20,8 @@ const Index = () => {
         <h1>Magic Vote</h1>
         <GoogleSignIn />
         <PollsList />
+        <CreatePoll />
+        <div>React version: {React.version}</div>
       </div>
     </ApolloProvider>
   );

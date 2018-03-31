@@ -2,16 +2,16 @@ import React from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
+export const GET_POLLS = gql`
+  {
+    allPolls {
+      name
+    }
+  }
+`;
+
 const PollsList = () => (
-  <Query
-    query={gql`
-      {
-        allPolls {
-          name
-        }
-      }
-    `}
-  >
+  <Query query={GET_POLLS}>
     {({ loading, error, data }) => {
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error.</p>;
