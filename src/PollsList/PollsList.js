@@ -1,14 +1,7 @@
 import React from "react";
 import { Query } from "react-apollo";
-import gql from "graphql-tag";
 
-export const GET_POLLS = gql`
-  {
-    allPolls {
-      name
-    }
-  }
-`;
+import { GET_POLLS } from "../queries";
 
 const PollsList = () => (
   <Query query={GET_POLLS}>
@@ -16,8 +9,8 @@ const PollsList = () => (
       if (loading) return <p>Loading...</p>;
       if (error) return <p>Error.</p>;
 
-      return data.allPolls.map(({ name }) => (
-        <div key={name}>
+      return data.allPolls.map(({ name, id }) => (
+        <div key={id}>
           <p>{`${name}`}</p>
         </div>
       ));

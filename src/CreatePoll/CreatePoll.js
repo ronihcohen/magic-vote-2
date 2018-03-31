@@ -1,22 +1,7 @@
 import React from "react";
-import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
-const CREATE_POLL = gql`
-  mutation createPoll($name: String!) {
-    createPoll(name: $name) {
-      name
-    }
-  }
-`;
-
-const GET_POLLS = gql`
-  {
-    allPolls {
-      name
-    }
-  }
-`;
+import { GET_POLLS, CREATE_POLL } from "../queries";
 
 const CreatePoll = () => {
   let input;
@@ -37,7 +22,17 @@ const CreatePoll = () => {
           <form
             onSubmit={e => {
               e.preventDefault();
-              createPoll({ variables: { name: input.value } });
+              createPoll({
+                variables: { name: input.value },
+                optimisticResponse: {
+                  __typename: "Mutation",
+                  createPoll: {
+                    id: input.value,
+                    __typename: "Poll",
+                    name: input.value
+                  }
+                }
+              });
               input.value = "";
             }}
           >
