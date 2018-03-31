@@ -22,12 +22,15 @@ const CreatePoll = () => {
           <form
             onSubmit={e => {
               e.preventDefault();
+              if (!input.value) {
+                return;
+              }
               createPoll({
                 variables: { name: input.value },
                 optimisticResponse: {
                   __typename: "Mutation",
                   createPoll: {
-                    id: input.value,
+                    id: Math.random(),
                     __typename: "Poll",
                     name: input.value
                   }
